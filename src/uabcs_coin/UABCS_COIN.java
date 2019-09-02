@@ -5,6 +5,9 @@
  */
 package uabcs_coin;
 
+import controller.controller_login;
+import view.login;
+
 /**
  *
  * @author luisangel
@@ -15,7 +18,10 @@ public class UABCS_COIN {
      * @param args the command line arguments
      */
     public static void main(String[] args) {
-        // TODO code application logic here
+        login vista = new login();
+        
+        controller_login crtl = new controller_login(vista);
+        crtl.init();
     }
     
 }

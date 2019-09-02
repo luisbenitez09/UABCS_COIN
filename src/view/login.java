@@ -27,28 +27,33 @@ public class login extends javax.swing.JFrame {
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {
 
+        jTextField1 = new javax.swing.JTextField();
         jButton1 = new javax.swing.JButton();
+        jPasswordField1 = new javax.swing.JPasswordField();
+        jLabel3 = new javax.swing.JLabel();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
+        getContentPane().setLayout(null);
 
-        jButton1.setText("jButton1");
+        jTextField1.setFont(new java.awt.Font("Lato", 0, 12)); // NOI18N
+        jTextField1.setText("Usuario...");
+        jTextField1.setBorder(null);
+        getContentPane().add(jTextField1);
+        jTextField1.setBounds(370, 170, 180, 15);
 
-        javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
-        getContentPane().setLayout(layout);
-        layout.setHorizontalGroup(
-            layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(layout.createSequentialGroup()
-                .addGap(147, 147, 147)
-                .addComponent(jButton1)
-                .addContainerGap(156, Short.MAX_VALUE))
-        );
-        layout.setVerticalGroup(
-            layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(layout.createSequentialGroup()
-                .addGap(95, 95, 95)
-                .addComponent(jButton1)
-                .addContainerGap(176, Short.MAX_VALUE))
-        );
+        jButton1.setBackground(new java.awt.Color(79, 168, 221));
+        jButton1.setFont(new java.awt.Font("Lato", 0, 12)); // NOI18N
+        jButton1.setText("Iniciar Sesión");
+        getContentPane().add(jButton1);
+        jButton1.setBounds(460, 230, 120, 30);
+
+        jPasswordField1.setBorder(null);
+        getContentPane().add(jPasswordField1);
+        jPasswordField1.setBounds(370, 206, 180, 16);
+
+        jLabel3.setIcon(new javax.swing.ImageIcon(getClass().getResource("/view/login_uabcs_coin.png"))); // NOI18N
+        getContentPane().add(jLabel3);
+        jLabel3.setBounds(0, 0, 598, 350);
 
         pack();
     }// </editor-fold>//GEN-END:initComponents
@@ -89,6 +94,9 @@ public class login extends javax.swing.JFrame {
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
-    private javax.swing.JButton jButton1;
+    public javax.swing.JButton jButton1;
+    private javax.swing.JLabel jLabel3;
+    public javax.swing.JPasswordField jPasswordField1;
+    public javax.swing.JTextField jTextField1;
     // End of variables declaration//GEN-END:variables
 }
