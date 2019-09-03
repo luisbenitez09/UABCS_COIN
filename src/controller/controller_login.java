@@ -22,15 +22,15 @@ public class controller_login implements ActionListener{
     
     public void init() {
         this.view.setVisible(true);
-        this.view.jButton1.addActionListener(this);
+        this.view.login_btn.addActionListener(this);
         this.view.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
     }
     
     
     @Override
     public void actionPerformed(ActionEvent arg0) {
-        String email = this.view.jTextField1.getText();
-        String pass = String.valueOf(this.view.jPasswordField1.getPassword());
+        String email = this.view.user_login.getText();
+        String pass = String.valueOf(this.view.pass_login.getPassword());
         
         usuario user = usuario.findByLogin(email, pass);
         if (user != null) {
