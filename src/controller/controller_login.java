@@ -32,6 +32,7 @@ public class controller_login implements ActionListener{
         String email = this.view.user_login.getText();
         String pass = String.valueOf(this.view.pass_login.getPassword());
         
+        
         usuario user = usuario.findByLogin(email, pass);
         if (user != null) {
         JOptionPane.showMessageDialog(view, "Bienvenido " + user.getNombre());

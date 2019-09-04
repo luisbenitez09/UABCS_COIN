@@ -1,10 +1,12 @@
-/*
- * To change this license header, choose License Headers in Project Properties.
- * To change this template file, choose Tools | Templates
- * and open the template in the editor.
- */
-package model;
 
+package model;
+import DB.connectionManager;
+import java.sql.Connection;
+import java.sql.SQLException;
+import java.util.logging.Level;
+import java.util.logging.Logger;
+import java.sql.PreparedStatement;
+import java.sql.ResultSet;
 /**
  *
  * @author luisangel
@@ -16,21 +18,44 @@ public class usuario {
     private String email;
     private String password;
     private String fechaNacimiento;
+    private static final String TABLE = "users";
      
     
     public static usuario findByLogin(String email, String pass) {
-        String emailDB = "benitez2909";
-        String passDB = "2909";
+        usuario Usuario = null;
+        Connection conn = null;
         
-        usuario usuario = null;
-        
-        if (email.equals(emailDB) && pass.equals(passDB)){
-            usuario = new usuario();
-            usuario.setNombre("Luis");
-            usuario.setApellido("Benitez");
-            usuario.setEmail("benitez2909");
+        try {
+            
+            conn = connectionManager.getConnection();
+            String query = "SELECT * FROM " + TABLE + " WHERE email = ? AND pass = sha1(?)";
+            PreparedStatement  pstm = conn.prepareStatement(query);
+            pstm.setString(1, email);
+            pstm.setString(2, pass);
+            System.out.println(pstm);
+            ResultSet rs = pstm.executeQuery();
+            
+            if (rs.next()) {
+                Usuario = new usuario();
+                Usuario.setNombre(rs.getString("fisrt_name"));
+                Usuario.setApellido(rs.getString("last_name"));
+                Usuario.setEmail(rs.getString("email"));
+                Usuario.setId(rs.getInt("userId"));
+            }
+            
+            /*if (email.equals(emailDB) && pass.equals(passDB)){
+                usuario = new usuario();
+                usuario.setNombre("Luis");
+                usuario.setApellido("Benitez");
+                usuario.setEmail("benitez2909");
+            }*/
+            
+        } catch (ClassNotFoundException ex) {
+            Logger.getLogger(usuario.class.getName()).log(Level.SEVERE, null, ex);
+        } catch (SQLException ex) {
+            Logger.getLogger(usuario.class.getName()).log(Level.SEVERE, null, ex);
         }
-        return usuario;
+        return Usuario;
     }
     
 
