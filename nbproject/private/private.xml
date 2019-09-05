@@ -5,6 +5,7 @@
         <group>
             <file>file:/Users/luisangel/NetBeansProjects/UABCS_COIN/src/uabcs_coin/UABCS_COIN.java</file>
             <file>file:/Users/luisangel/NetBeansProjects/UABCS_COIN/src/model/usuario.java</file>
+            <file>file:/Users/luisangel/NetBeansProjects/UABCS_COIN/src/DB/connectionManager.java</file>
             <file>file:/Users/luisangel/NetBeansProjects/UABCS_COIN/src/view/login.java</file>
             <file>file:/Users/luisangel/NetBeansProjects/UABCS_COIN/src/controller/controller_login.java</file>
         </group>
