@@ -7,6 +7,7 @@ import java.util.logging.Level;
 import java.util.logging.Logger;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
+import java.sql.Date;
 /**
  *
  * @author luisangel
@@ -17,7 +18,7 @@ public class usuario {
     private String apellido;
     private String email;
     private String password;
-    private String fechaNacimiento;
+    private Date fechaNacimiento;
     private static final String TABLE = "users";
      
     
@@ -43,13 +44,6 @@ public class usuario {
                 Usuario.setId(rs.getInt("userId"));
             }
             
-            /*if (email.equals(emailDB) && pass.equals(passDB)){
-                usuario = new usuario();
-                usuario.setNombre("Luis");
-                usuario.setApellido("Benitez");
-                usuario.setEmail("benitez2909");
-            }*/
-            
         } catch (ClassNotFoundException ex) {
             Logger.getLogger(usuario.class.getName()).log(Level.SEVERE, null, ex);
         } catch (SQLException ex) {
@@ -57,6 +51,40 @@ public class usuario {
         }
         return Usuario;
     }
+    
+    public boolean create() {
+        boolean created = false;
+        Connection conn = null;
+        try {
+            conn = connectionManager.getConnection();
+            String query = "INSERT INTO " + TABLE + "(fisrt_name, last_name, email, pass, cumple) VALUES (?,?,?,?,?)";
+            PreparedStatement pstm = conn.prepareStatement(query);
+            pstm.setString(1, this.nombre);
+            pstm.setString(2, this.apellido);
+            pstm.setString(3, this.email);
+            pstm.setString(4, this.password);
+            pstm.setDate(5, this.getFechaNacimiento());
+            int row = pstm.executeUpdate();
+            created = row == 1;
+        } catch (ClassNotFoundException ex) {
+            Logger.getLogger(usuario.class.getName()).log(Level.SEVERE, null, ex);
+        } catch (SQLException ex) {
+            Logger.getLogger(usuario.class.getName()).log(Level.SEVERE, null, ex);
+        } finally {
+            if (conn != null) {
+                try {
+                    conn.close();
+                } catch (SQLException ex) {
+                    Logger.getLogger(usuario.class.getName()).log(Level.SEVERE, null, ex);
+                }
+        }
+        }
+        return created;
+    }
+    
+    
+    
+    
     
 
     public int getId() {
@@ -94,11 +122,12 @@ public class usuario {
         this.password = password;
     }
 
-    public String getFechaNacimiento() {
+    public Date getFechaNacimiento() {
         return fechaNacimiento;
     }
-    public void setFechaNacimiento(String fechaNacimiento) {
-        this.fechaNacimiento = fechaNacimiento;
+    public void setFechaNacimiento(java.util.Date fechaNacimiento) {
+        
+        this.fechaNacimiento = new Date(fechaNacimiento.getTime());
     }
     
     
