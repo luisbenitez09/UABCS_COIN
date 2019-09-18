@@ -58,9 +58,18 @@ public class controller_login implements ActionListener{
                 u.setFechaNacimiento(this.view.fecha_singup.getDate());
                 if (u.create()) {
                     JOptionPane.showMessageDialog(view,"Datos guardados correctamente");
+                    
                 } else {
                     JOptionPane.showMessageDialog(view,"Ocurrio un error con tu información");
+                    
                 }
+                this.view.name_singup.setText("");
+                this.view.lname_singup.setText("");
+                this.view.pass_singup.setText("");
+                this.view.pass2_singup.setText("");
+                this.view.mail_singup.setText("");
+                this.view.fecha_singup.setDate(null);
+                
             }
             
             

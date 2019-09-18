@@ -34,11 +34,8 @@ public class inicio extends javax.swing.JFrame {
         BTNmovimientos = new javax.swing.JButton();
         BTNtransferencia = new javax.swing.JButton();
         basicMoney = new javax.swing.JLabel();
-        basicCard = new javax.swing.JLabel();
         goldMoney = new javax.swing.JLabel();
-        goldCard = new javax.swing.JLabel();
         premiumMoney = new javax.swing.JLabel();
-        premiumCard = new javax.swing.JLabel();
         close = new javax.swing.JButton();
         jLabel1 = new javax.swing.JLabel();
 
@@ -79,34 +76,19 @@ public class inicio extends javax.swing.JFrame {
         basicMoney.setForeground(new java.awt.Color(255, 255, 255));
         basicMoney.setText("111,111");
         getContentPane().add(basicMoney);
-        basicMoney.setBounds(120, 300, 170, 20);
-
-        basicCard.setIcon(new javax.swing.ImageIcon(getClass().getResource("/view/IMG/basicCard.png"))); // NOI18N
-        getContentPane().add(basicCard);
-        basicCard.setBounds(80, 180, 290, 160);
+        basicMoney.setBounds(120, 300, 170, 30);
 
         goldMoney.setFont(new java.awt.Font("Roboto", 0, 20)); // NOI18N
         goldMoney.setForeground(new java.awt.Color(255, 255, 255));
         goldMoney.setText("No disponible");
-        goldMoney.setBounds(new java.awt.Rectangle(460, 304, 170, 20));
         getContentPane().add(goldMoney);
-        goldMoney.setBounds(460, 300, 170, 20);
-
-        goldCard.setIcon(new javax.swing.ImageIcon(getClass().getResource("/view/IMG/goldCard.png"))); // NOI18N
-        goldCard.setBounds(new java.awt.Rectangle(417, 185, 290, 160));
-        getContentPane().add(goldCard);
-        goldCard.setBounds(410, 180, 290, 160);
+        goldMoney.setBounds(460, 300, 170, 30);
 
         premiumMoney.setFont(new java.awt.Font("Roboto", 0, 20)); // NOI18N
         premiumMoney.setForeground(new java.awt.Color(255, 255, 255));
         premiumMoney.setText("No disponible");
         getContentPane().add(premiumMoney);
-        premiumMoney.setBounds(790, 310, 170, 20);
-
-        premiumCard.setIcon(new javax.swing.ImageIcon(getClass().getResource("/view/IMG/premiumCard.png"))); // NOI18N
-        premiumCard.setBounds(new java.awt.Rectangle(754, 188, 290, 160));
-        getContentPane().add(premiumCard);
-        premiumCard.setBounds(750, 190, 290, 160);
+        premiumMoney.setBounds(790, 300, 170, 30);
 
         close.setBorderPainted(false);
         getContentPane().add(close);
@@ -161,15 +143,12 @@ public class inicio extends javax.swing.JFrame {
     public javax.swing.JButton BTNmovimientos;
     public javax.swing.JButton BTNtransferencia;
     public javax.swing.JLabel balance;
-    public javax.swing.JLabel basicCard;
     public javax.swing.JLabel basicMoney;
     public javax.swing.JButton close;
-    public javax.swing.JLabel goldCard;
     public javax.swing.JLabel goldMoney;
     private javax.swing.JButton jButton1;
     private javax.swing.JLabel jLabel1;
     public javax.swing.JLabel name;
-    public javax.swing.JLabel premiumCard;
     public javax.swing.JLabel premiumMoney;
     // End of variables declaration//GEN-END:variables
 }

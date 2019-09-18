@@ -48,6 +48,14 @@ public class usuario {
             Logger.getLogger(usuario.class.getName()).log(Level.SEVERE, null, ex);
         } catch (SQLException ex) {
             Logger.getLogger(usuario.class.getName()).log(Level.SEVERE, null, ex);
+        } finally {
+            if (conn != null) {
+                try {
+                    conn.close();
+                } catch (SQLException ex) {
+                    Logger.getLogger(usuario.class.getName()).log(Level.SEVERE, null, ex);
+                }
+            }
         }
         return Usuario;
     }

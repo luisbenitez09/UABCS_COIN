@@ -4,6 +4,7 @@ package controller;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 import javax.swing.JFrame;
+import model.cuenta;
 import model.usuario;
 import view.crearCuenta;
 import view.inicio;
@@ -35,6 +36,14 @@ public class controller_inicio implements ActionListener{
         this.view.BTNtransferencia.addActionListener(this);
         
         this.view.name.setText(this.user.getNombre() + " " +this.user.getApellido());
+        cuenta model = new cuenta();
+        model.inicio(this.user.getId());
+        this.view.balance.setText(Integer.toString(model.getBalance()));
+        
+        this.view.basicMoney.setText(Integer.toString(model.getCuentaB()));
+        this.view.goldMoney.setText(Integer.toString(model.getCuentaG()));
+        System.out.println(model.getCuentaG());
+        this.view.premiumMoney.setText(Integer.toString(model.getCuentaP()));
         
         
     }

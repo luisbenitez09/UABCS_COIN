@@ -81,7 +81,7 @@ public class transferencia extends javax.swing.JFrame {
         monto.setBackground(new java.awt.Color(248, 249, 253));
         monto.setBorder(null);
         getContentPane().add(monto);
-        monto.setBounds(450, 526, 340, 40);
+        monto.setBounds(450, 540, 340, 40);
 
         tipoCuenta.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Item 1", "Item 2", "Item 3", "Item 4" }));
         getContentPane().add(tipoCuenta);
@@ -108,7 +108,7 @@ public class transferencia extends javax.swing.JFrame {
         card.setIcon(new javax.swing.ImageIcon(getClass().getResource("/view/IMG/goldCard.png"))); // NOI18N
         card.setAlignmentY(0.0F);
         getContentPane().add(card);
-        card.setBounds(80, 190, 286, 150);
+        card.setBounds(80, 200, 286, 150);
 
         terminacionCuenta.setFont(new java.awt.Font("Roboto", 1, 25)); // NOI18N
         terminacionCuenta.setText("2 9 0 9");
@@ -117,7 +117,7 @@ public class transferencia extends javax.swing.JFrame {
 
         jLabel1.setIcon(new javax.swing.ImageIcon(getClass().getResource("/view/IMG/transferencia.png"))); // NOI18N
         getContentPane().add(jLabel1);
-        jLabel1.setBounds(-4, -10, 1070, 640);
+        jLabel1.setBounds(0, 0, 1070, 640);
 
         pack();
         setLocationRelativeTo(null);

@@ -92,9 +92,10 @@ public class login extends javax.swing.JFrame {
 
         pass_singup.setBorder(null);
         getContentPane().add(pass_singup);
-        pass_singup.setBounds(50, 380, 240, 20);
+        pass_singup.setBounds(50, 380, 240, 30);
 
         pass2_singup.setBorder(null);
+        pass2_singup.setBounds(new java.awt.Rectangle(330, 384, 240, 25));
         getContentPane().add(pass2_singup);
         pass2_singup.setBounds(330, 384, 240, 20);
 
