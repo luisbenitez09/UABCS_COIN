@@ -34,7 +34,7 @@ public class transferencia extends javax.swing.JFrame {
         ultimoMov = new javax.swing.JLabel();
         cuentaDeposito = new javax.swing.JTextField();
         monto = new javax.swing.JTextField();
-        tipoCuenta = new javax.swing.JComboBox<>();
+        numCuenta = new javax.swing.JComboBox<>();
         BTNtransferir = new javax.swing.JButton();
         movimientos = new javax.swing.JButton();
         crearCuenta = new javax.swing.JButton();
@@ -58,7 +58,7 @@ public class transferencia extends javax.swing.JFrame {
 
         balanceCuenta.setFont(new java.awt.Font("Roboto", 1, 25)); // NOI18N
         balanceCuenta.setForeground(new java.awt.Color(255, 255, 255));
-        balanceCuenta.setText("5,123");
+        balanceCuenta.setText("0");
         getContentPane().add(balanceCuenta);
         balanceCuenta.setBounds(840, 80, 210, 40);
 
@@ -71,7 +71,7 @@ public class transferencia extends javax.swing.JFrame {
         ultimoMov.setFont(new java.awt.Font("Roboto", 0, 20)); // NOI18N
         ultimoMov.setText("28/08/1999");
         getContentPane().add(ultimoMov);
-        ultimoMov.setBounds(680, 300, 160, 50);
+        ultimoMov.setBounds(680, 300, 280, 50);
 
         cuentaDeposito.setBackground(new java.awt.Color(248, 249, 253));
         cuentaDeposito.setBorder(null);
@@ -81,11 +81,11 @@ public class transferencia extends javax.swing.JFrame {
         monto.setBackground(new java.awt.Color(248, 249, 253));
         monto.setBorder(null);
         getContentPane().add(monto);
-        monto.setBounds(450, 540, 340, 40);
+        monto.setBounds(450, 540, 340, 30);
 
-        tipoCuenta.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Item 1", "Item 2", "Item 3", "Item 4" }));
-        getContentPane().add(tipoCuenta);
-        tipoCuenta.setBounds(76, 410, 210, 27);
+        numCuenta.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Item 1", "Item 2", "Item 3", "Item 4" }));
+        getContentPane().add(numCuenta);
+        numCuenta.setBounds(76, 410, 210, 27);
 
         BTNtransferir.setBorderPainted(false);
         getContentPane().add(BTNtransferir);
@@ -101,23 +101,23 @@ public class transferencia extends javax.swing.JFrame {
 
         balanceCuenta2.setFont(new java.awt.Font("Roboto", 1, 20)); // NOI18N
         balanceCuenta2.setForeground(new java.awt.Color(255, 255, 255));
-        balanceCuenta2.setText("5,123");
+        balanceCuenta2.setText("0");
         getContentPane().add(balanceCuenta2);
-        balanceCuenta2.setBounds(120, 300, 160, 30);
+        balanceCuenta2.setBounds(120, 300, 160, 24);
 
-        card.setIcon(new javax.swing.ImageIcon(getClass().getResource("/view/IMG/goldCard.png"))); // NOI18N
+        card.setIcon(new javax.swing.ImageIcon(getClass().getResource("/view/IMG/newCard.png"))); // NOI18N
         card.setAlignmentY(0.0F);
+        card.setBounds(new java.awt.Rectangle(80, 178, 286, 170));
         getContentPane().add(card);
-        card.setBounds(80, 200, 286, 150);
+        card.setBounds(80, 180, 286, 170);
 
         terminacionCuenta.setFont(new java.awt.Font("Roboto", 1, 25)); // NOI18N
-        terminacionCuenta.setText("2 9 0 9");
         getContentPane().add(terminacionCuenta);
-        terminacionCuenta.setBounds(930, 230, 160, 40);
+        terminacionCuenta.setBounds(930, 220, 90, 60);
 
         jLabel1.setIcon(new javax.swing.ImageIcon(getClass().getResource("/view/IMG/transferencia.png"))); // NOI18N
         getContentPane().add(jLabel1);
-        jLabel1.setBounds(0, 0, 1070, 640);
+        jLabel1.setBounds(0, -10, 1070, 640);
 
         pack();
         setLocationRelativeTo(null);
@@ -171,8 +171,8 @@ public class transferencia extends javax.swing.JFrame {
     public javax.swing.JTextField monto;
     public javax.swing.JButton movimientos;
     public javax.swing.JLabel nombre;
+    public javax.swing.JComboBox<String> numCuenta;
     public javax.swing.JLabel terminacionCuenta;
-    public javax.swing.JComboBox<String> tipoCuenta;
     public javax.swing.JLabel ultimoMov;
     // End of variables declaration//GEN-END:variables
 }

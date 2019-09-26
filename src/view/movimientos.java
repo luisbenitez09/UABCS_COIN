@@ -31,18 +31,21 @@ public class movimientos extends javax.swing.JFrame {
         inicio = new javax.swing.JButton();
         balance = new javax.swing.JLabel();
         name = new javax.swing.JLabel();
-        terminacionTarjeta = new javax.swing.JLabel();
-        jLabel6 = new javax.swing.JLabel();
-        jLabel5 = new javax.swing.JLabel();
+        terminacionCuenta = new javax.swing.JLabel();
+        balance2 = new javax.swing.JLabel();
+        card = new javax.swing.JLabel();
         fechaInicio = new com.toedter.calendar.JDateChooser();
         fechaFin = new com.toedter.calendar.JDateChooser();
         crearCuenta = new javax.swing.JButton();
         BTNtransferencia = new javax.swing.JButton();
-        fechaMov = new javax.swing.JLabel();
-        deposito = new javax.swing.JLabel();
-        retiro = new javax.swing.JLabel();
         jLabel2 = new javax.swing.JLabel();
-        jComboBox1 = new javax.swing.JComboBox<>();
+        numCuenta = new javax.swing.JComboBox<>();
+        ultimoMov = new javax.swing.JLabel();
+        consulta = new javax.swing.JButton();
+        jScrollPane2 = new javax.swing.JScrollPane();
+        jTextArea1 = new javax.swing.JTextArea();
+        jScrollPane1 = new javax.swing.JScrollPane();
+        jTextArea2 = new javax.swing.JTextArea();
         jLabel1 = new javax.swing.JLabel();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
@@ -70,56 +73,77 @@ public class movimientos extends javax.swing.JFrame {
         getContentPane().add(name);
         name.setBounds(170, 100, 340, 31);
 
-        terminacionTarjeta.setFont(new java.awt.Font("Roboto", 0, 25)); // NOI18N
-        terminacionTarjeta.setText("2 9 0 9");
-        getContentPane().add(terminacionTarjeta);
-        terminacionTarjeta.setBounds(930, 240, 110, 30);
+        terminacionCuenta.setFont(new java.awt.Font("Roboto", 0, 25)); // NOI18N
+        terminacionCuenta.setText("2 9 0 9");
+        getContentPane().add(terminacionCuenta);
+        terminacionCuenta.setBounds(930, 240, 110, 30);
 
-        jLabel6.setFont(new java.awt.Font("Roboto", 1, 20)); // NOI18N
-        jLabel6.setForeground(new java.awt.Color(255, 255, 255));
-        jLabel6.setText("5,1234");
-        getContentPane().add(jLabel6);
-        jLabel6.setBounds(120, 300, 150, 30);
+        balance2.setFont(new java.awt.Font("Roboto", 1, 20)); // NOI18N
+        balance2.setForeground(new java.awt.Color(255, 255, 255));
+        balance2.setText("5,1234");
+        getContentPane().add(balance2);
+        balance2.setBounds(120, 300, 150, 30);
 
-        jLabel5.setIcon(new javax.swing.ImageIcon(getClass().getResource("/view/IMG/goldCard.png"))); // NOI18N
-        getContentPane().add(jLabel5);
-        jLabel5.setBounds(80, 190, 290, 150);
+        card.setIcon(new javax.swing.ImageIcon(getClass().getResource("/view/IMG/newCard.png"))); // NOI18N
+        getContentPane().add(card);
+        card.setBounds(80, 190, 290, 150);
         getContentPane().add(fechaInicio);
         fechaInicio.setBounds(50, 390, 160, 26);
         getContentPane().add(fechaFin);
-        fechaFin.setBounds(280, 390, 140, 26);
+        fechaFin.setBounds(270, 390, 150, 26);
 
         crearCuenta.setBorderPainted(false);
         getContentPane().add(crearCuenta);
         crearCuenta.setBounds(250, 500, 97, 100);
 
         BTNtransferencia.setBorderPainted(false);
+        BTNtransferencia.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                BTNtransferenciaActionPerformed(evt);
+            }
+        });
         getContentPane().add(BTNtransferencia);
         BTNtransferencia.setBounds(90, 500, 100, 100);
-
-        fechaMov.setFont(new java.awt.Font("Roboto", 0, 20)); // NOI18N
-        fechaMov.setText("28/08/2019 | 06:45:34");
-        getContentPane().add(fechaMov);
-        fechaMov.setBounds(440, 390, 220, 20);
-
-        deposito.setFont(new java.awt.Font("Roboto", 0, 20)); // NOI18N
-        deposito.setText("$1,000");
-        getContentPane().add(deposito);
-        deposito.setBounds(710, 380, 130, 30);
-
-        retiro.setFont(new java.awt.Font("Roboto", 0, 20)); // NOI18N
-        retiro.setText("$500");
-        getContentPane().add(retiro);
-        retiro.setBounds(930, 380, 100, 24);
 
         jLabel2.setFont(new java.awt.Font("Roboto", 0, 13)); // NOI18N
         jLabel2.setText("Seleccionar cuenta");
         getContentPane().add(jLabel2);
         jLabel2.setBounds(50, 430, 150, 17);
 
-        jComboBox1.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Item 1", "Item 2", "Item 3", "Item 4" }));
-        getContentPane().add(jComboBox1);
-        jComboBox1.setBounds(50, 460, 170, 27);
+        numCuenta.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Item 1", "Item 2", "Item 3", "Item 4" }));
+        getContentPane().add(numCuenta);
+        numCuenta.setBounds(50, 460, 170, 27);
+
+        ultimoMov.setFont(new java.awt.Font("Roboto", 0, 20)); // NOI18N
+        getContentPane().add(ultimoMov);
+        ultimoMov.setBounds(680, 280, 290, 40);
+
+        consulta.setText("Consultar");
+        getContentPane().add(consulta);
+        consulta.setBounds(267, 460, 130, 29);
+
+        jScrollPane2.setBorder(null);
+
+        jTextArea1.setEditable(false);
+        jTextArea1.setColumns(20);
+        jTextArea1.setFont(new java.awt.Font("Roboto", 0, 20)); // NOI18N
+        jTextArea1.setRows(5);
+        jScrollPane2.setViewportView(jTextArea1);
+
+        getContentPane().add(jScrollPane2);
+        jScrollPane2.setBounds(440, 350, 490, 240);
+
+        jScrollPane1.setBorder(null);
+
+        jTextArea2.setEditable(false);
+        jTextArea2.setColumns(1);
+        jTextArea2.setFont(new java.awt.Font("Roboto", 0, 20)); // NOI18N
+        jTextArea2.setRows(5);
+        jTextArea2.setToolTipText("");
+        jScrollPane1.setViewportView(jTextArea2);
+
+        getContentPane().add(jScrollPane1);
+        jScrollPane1.setBounds(930, 350, 120, 240);
 
         jLabel1.setIcon(new javax.swing.ImageIcon(getClass().getResource("/view/IMG/movimientos.png"))); // NOI18N
         getContentPane().add(jLabel1);
@@ -128,6 +152,10 @@ public class movimientos extends javax.swing.JFrame {
         pack();
         setLocationRelativeTo(null);
     }// </editor-fold>//GEN-END:initComponents
+
+    private void BTNtransferenciaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_BTNtransferenciaActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_BTNtransferenciaActionPerformed
 
     /**
      * @param args the command line arguments
@@ -167,20 +195,23 @@ public class movimientos extends javax.swing.JFrame {
     // Variables declaration - do not modify//GEN-BEGIN:variables
     public javax.swing.JButton BTNtransferencia;
     public javax.swing.JLabel balance;
+    public javax.swing.JLabel balance2;
+    public javax.swing.JLabel card;
     public javax.swing.JButton close;
+    public javax.swing.JButton consulta;
     public javax.swing.JButton crearCuenta;
-    public javax.swing.JLabel deposito;
     public com.toedter.calendar.JDateChooser fechaFin;
     public com.toedter.calendar.JDateChooser fechaInicio;
-    public javax.swing.JLabel fechaMov;
     public javax.swing.JButton inicio;
-    private javax.swing.JComboBox<String> jComboBox1;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel2;
-    private javax.swing.JLabel jLabel5;
-    private javax.swing.JLabel jLabel6;
+    private javax.swing.JScrollPane jScrollPane1;
+    private javax.swing.JScrollPane jScrollPane2;
+    public javax.swing.JTextArea jTextArea1;
+    public javax.swing.JTextArea jTextArea2;
     public javax.swing.JLabel name;
-    public javax.swing.JLabel retiro;
-    public javax.swing.JLabel terminacionTarjeta;
+    public javax.swing.JComboBox<String> numCuenta;
+    public javax.swing.JLabel terminacionCuenta;
+    public javax.swing.JLabel ultimoMov;
     // End of variables declaration//GEN-END:variables
 }

@@ -3,6 +3,9 @@ package controller;
 
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
+import java.sql.SQLException;
+import java.util.logging.Level;
+import java.util.logging.Logger;
 import javax.swing.JFrame;
 import model.cuenta;
 import model.usuario;
@@ -42,7 +45,6 @@ public class controller_inicio implements ActionListener{
         
         this.view.basicMoney.setText(Integer.toString(model.getCuentaB()));
         this.view.goldMoney.setText(Integer.toString(model.getCuentaG()));
-        System.out.println(model.getCuentaG());
         this.view.premiumMoney.setText(Integer.toString(model.getCuentaP()));
         
         
@@ -61,11 +63,23 @@ public class controller_inicio implements ActionListener{
             this.view.dispose();
         } else if (e.getSource() == this.view.BTNtransferencia){
             controller_transfer transfer = new controller_transfer(new transferencia(),user);
-            transfer.init();
+            try {
+                transfer.init();
+            } catch (ClassNotFoundException ex) {
+                Logger.getLogger(controller_inicio.class.getName()).log(Level.SEVERE, null, ex);
+            } catch (SQLException ex) {
+                Logger.getLogger(controller_inicio.class.getName()).log(Level.SEVERE, null, ex);
+            }
             this.view.dispose();
         } else if (e.getSource() == this.view.BTNmovimientos){
             controller_movimientos movimientos = new controller_movimientos(new movimientos(),user);
-            movimientos.init();
+            try {
+                movimientos.init();
+            } catch (ClassNotFoundException ex) {
+                Logger.getLogger(controller_inicio.class.getName()).log(Level.SEVERE, null, ex);
+            } catch (SQLException ex) {
+                Logger.getLogger(controller_inicio.class.getName()).log(Level.SEVERE, null, ex);
+            }
             this.view.dispose();
         }
     }

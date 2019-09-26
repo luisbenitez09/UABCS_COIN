@@ -33,7 +33,7 @@ public class usuario {
             PreparedStatement  pstm = conn.prepareStatement(query);
             pstm.setString(1, email);
             pstm.setString(2, pass);
-            System.out.println(pstm);
+            
             ResultSet rs = pstm.executeQuery();
             
             if (rs.next()) {
@@ -72,6 +72,7 @@ public class usuario {
             pstm.setString(3, this.email);
             pstm.setString(4, this.password);
             pstm.setDate(5, this.getFechaNacimiento());
+            
             int row = pstm.executeUpdate();
             created = row == 1;
         } catch (ClassNotFoundException ex) {
@@ -87,6 +88,7 @@ public class usuario {
                 }
         }
         }
+        
         return created;
     }
     
@@ -130,6 +132,9 @@ public class usuario {
         this.password = password;
     }
 
+    
+    
+    
     public Date getFechaNacimiento() {
         return fechaNacimiento;
     }

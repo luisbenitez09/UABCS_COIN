@@ -49,6 +49,7 @@ public class login extends javax.swing.JFrame {
         user_login.setBackground(new java.awt.Color(31, 52, 159));
         user_login.setFont(new java.awt.Font("Lato", 0, 20)); // NOI18N
         user_login.setForeground(new java.awt.Color(255, 255, 255));
+        user_login.setText("benitez2909@gmail.com");
         user_login.setBorder(javax.swing.BorderFactory.createEmptyBorder(1, 1, 1, 1));
         user_login.setNextFocusableComponent(jLabel1);
         user_login.setOpaque(true);
@@ -64,6 +65,7 @@ public class login extends javax.swing.JFrame {
         pass_login.setBackground(new java.awt.Color(31, 52, 159));
         pass_login.setFont(new java.awt.Font("Lato", 0, 20)); // NOI18N
         pass_login.setForeground(new java.awt.Color(255, 255, 255));
+        pass_login.setText("Beol970929$");
         pass_login.setBorder(null);
         getContentPane().add(pass_login);
         pass_login.setBounds(720, 310, 210, 30);
@@ -95,7 +97,6 @@ public class login extends javax.swing.JFrame {
         pass_singup.setBounds(50, 380, 240, 30);
 
         pass2_singup.setBorder(null);
-        pass2_singup.setBounds(new java.awt.Rectangle(330, 384, 240, 25));
         getContentPane().add(pass2_singup);
         pass2_singup.setBounds(330, 384, 240, 20);
 
