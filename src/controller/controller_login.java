@@ -56,11 +56,15 @@ public class controller_login implements ActionListener{
                 u.setEmail(this.view.mail_singup.getText());
                 u.setPassword(password);
                 u.setFechaNacimiento(this.view.fecha_singup.getDate());
-                if (u.create()) {
+                if (u.createSP() == 1) {
                     JOptionPane.showMessageDialog(view,"Datos guardados correctamente");
                     
                 } else {
-                    JOptionPane.showMessageDialog(view,"Ocurrio un error con tu información");
+                    if (u.createSP() == -1) {
+                        JOptionPane.showMessageDialog(view,"Contraseña muy debil");
+                    } else {
+                        JOptionPane.showMessageDialog(view,"Ocurrio un error con tu información");
+                    }
                     
                 }
                 this.view.name_singup.setText("");

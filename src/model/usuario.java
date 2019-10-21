@@ -1,6 +1,7 @@
-
 package model;
+
 import DB.connectionManager;
+import java.sql.CallableStatement;
 import java.sql.Connection;
 import java.sql.SQLException;
 import java.util.logging.Level;
@@ -8,6 +9,7 @@ import java.util.logging.Logger;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.Date;
+import java.sql.Types;
 /**
  *
  * @author luisangel
@@ -92,7 +94,39 @@ public class usuario {
         return created;
     }
     
-    
+    public int createSP() {
+        int created = 0;
+        Connection conn = null;
+        try {
+            conn = connectionManager.getConnection();
+            String query = "{CALL ADD_USER(?, ?, ?, ?, ?, ?)}";
+            CallableStatement cb = conn.prepareCall(query);
+            cb.setString(1, this.nombre);
+            cb.setString(2, this.apellido);
+            cb.setString(3, this.email);
+            cb.setString(4, this.password);
+            cb.setDate(5, this.getFechaNacimiento());
+            cb.registerOutParameter(6, Types.INTEGER);
+            cb.execute();
+            created = cb.getInt(6);
+            
+            
+        } catch (ClassNotFoundException ex) {
+            Logger.getLogger(usuario.class.getName()).log(Level.SEVERE, null, ex);
+        } catch (SQLException ex) {
+            Logger.getLogger(usuario.class.getName()).log(Level.SEVERE, null, ex);
+        } finally {
+            if (conn != null) {
+                try {
+                    conn.close();
+                } catch (SQLException ex) {
+                    Logger.getLogger(usuario.class.getName()).log(Level.SEVERE, null, ex);
+                }
+        }
+        }
+        
+        return created;
+    }
     
     
     
