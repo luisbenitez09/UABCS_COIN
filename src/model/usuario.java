@@ -122,7 +122,7 @@ public class usuario {
                 } catch (SQLException ex) {
                     Logger.getLogger(usuario.class.getName()).log(Level.SEVERE, null, ex);
                 }
-        }
+            }
         }
         
         return created;

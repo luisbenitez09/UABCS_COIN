@@ -58,14 +58,12 @@ public class controller_login implements ActionListener{
                 u.setFechaNacimiento(this.view.fecha_singup.getDate());
                 if (u.createSP() == 1) {
                     JOptionPane.showMessageDialog(view,"Datos guardados correctamente");
-                    
+                } else if (u.createSP() == -1) {
+                    JOptionPane.showMessageDialog(view,"La contraseña debe tener al menos 8 dígitos, un número, y un símbolo especial.");
+                } else if (u.createSP() == -2) {
+                    JOptionPane.showMessageDialog(view,"Debes ser mayor de edad para registrarte en UBCS COIN");
                 } else {
-                    if (u.createSP() == -1) {
-                        JOptionPane.showMessageDialog(view,"Contraseña muy debil");
-                    } else {
-                        JOptionPane.showMessageDialog(view,"Ocurrio un error con tu información");
-                    }
-                    
+                    JOptionPane.showMessageDialog(view,"Ocurrio un error con tus datos.");
                 }
                 this.view.name_singup.setText("");
                 this.view.lname_singup.setText("");
