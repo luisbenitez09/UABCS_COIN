@@ -64,12 +64,18 @@ public class controller_crear implements ActionListener{
             this.view.dispose();
         } else if (e.getSource() == this.view.BTNcrear){
             String tipo = this.view.tiposCuentas.getSelectedItem().toString();
-            cuenta model = new cuenta();
-            model.addCuenta(this.user.getId(), tipo,Integer.parseInt(this.view.monto.getText()));
-            JOptionPane.showMessageDialog(view, "Cuenta creada");
-            controller_inicio inicio = new controller_inicio(new inicio(),this.user);
-            inicio.init();
-            this.view.dispose();
+            cuenta m = new cuenta();
+            int code = m.addCuenta(this.user.getId(), tipo,Integer.parseInt(this.view.monto.getText()));
+            if (code == 1 ){
+                JOptionPane.showMessageDialog(view, "Cuenta creada");
+                controller_inicio inicio = new controller_inicio(new inicio(),this.user);
+                inicio.init();
+                this.view.dispose();
+            } else if (code == -1) {
+                JOptionPane.showMessageDialog(view, "Estas exediendo el limite máximo de saldo permitido en esta cuenta");
+            } else {
+                JOptionPane.showMessageDialog(view, "Ocurrio un error, intenta más tarde.");
+            }
         } 
     }
     
