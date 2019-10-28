@@ -116,15 +116,73 @@ public class cuenta {
     }
     
     // ------------------ STRING -----------------
-    public String[] cuentas (int id) throws ClassNotFoundException, SQLException {
+   public String[] cuentas (int id) throws ClassNotFoundException, SQLException {
         this.id = id;
         
         Connection conn = null;
-        String[] cuentas = new String [2];
+        String[] cuentas = null;
         
-        cuentas[0] = "3763";
-        cuentas[1] = "3764";
+        try {
+            conn = connectionManager.getConnection();
+            String query = "SELECT cuentaId FROM " + TABLE + " WHERE userCuenta = ?";
+            PreparedStatement  pstm = conn.prepareStatement(query);
+            pstm.setInt(1, id);
+            ResultSet rs = pstm.executeQuery();
+            
+            int  iter = 0;
+            while (rs.next()) {
+                iter++;
+            }
+            cuentas = new String[iter];
+            
+            rs = pstm.executeQuery();
+            
+            iter = 0;
+            while (rs.next()) {
+                cuentas[iter] = rs.getString("cuentaId");
+                iter++;
+            }
+            
+        } catch (SQLException ex) {
+            Logger.getLogger(cuenta.class.getName()).log(Level.SEVERE, null, ex);
+        }
+            
+        return cuentas;
+    }
+   
+   public String[] cuentasFrec (int cuentaM)  {
+        this.id = id;
         
+        Connection conn = null;
+        String[] cuentas = null;
+        
+        try {
+            conn = connectionManager.getConnection();
+            String query = "SELECT cuentaRecurrente FROM cuentasFrecuentes WHERE cuentaMaster = ?";
+            PreparedStatement  pstm = conn.prepareStatement(query);
+            pstm.setInt(1, cuentaM);
+            ResultSet rs = pstm.executeQuery();
+            
+            int  iter = 0;
+            while (rs.next()) {
+                iter++;
+            }
+            cuentas = new String[iter];
+            
+            rs = pstm.executeQuery();
+            
+            iter = 0;
+            while (rs.next()) {
+                cuentas[iter] = rs.getString("cuentaRecurrente");
+                iter++;
+            }
+            
+        } catch (SQLException ex) {
+            Logger.getLogger(cuenta.class.getName()).log(Level.SEVERE, null, ex);
+        } catch (ClassNotFoundException ex) {
+            Logger.getLogger(cuenta.class.getName()).log(Level.SEVERE, null, ex);
+        }
+            
         return cuentas;
     }
 

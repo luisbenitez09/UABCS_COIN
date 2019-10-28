@@ -202,6 +202,15 @@ public class controller_transfer implements ActionListener{
                 this.view.cFrecuentes.setVisible(true);
                 this.view.addFrecuente.setVisible(false);
                 this.tipoTransferencia = 2;
+                
+                cuenta m = new cuenta();
+                int cuentaOrigen = Integer.parseInt(this.view.numCuenta.getSelectedItem().toString());
+                this.view.cFrecuentes.removeAllItems();
+                String[] cuentas = m.cuentasFrec(cuentaOrigen);
+                    for (int i = 0; i < cuentas.length; i++) {
+                        this.view.cFrecuentes.addItem(cuentas[i]);
+                    }
+                
             }
             
         }
