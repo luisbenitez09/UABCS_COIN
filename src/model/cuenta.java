@@ -115,39 +115,16 @@ public class cuenta {
         return created;
     }
     
+    // ------------------ STRING -----------------
     public String[] cuentas (int id) throws ClassNotFoundException, SQLException {
         this.id = id;
         
         Connection conn = null;
-        String[] cuentas = null;
+        String[] cuentas = new String [2];
         
-        try {
-            conn = connectionManager.getConnection();
-            String query = "{CALL CUENTAS_SP(?, ?)}";
-            CallableStatement  cb = conn.prepareCall(query);
-            cb.setInt(1, id);
-            cb.execute();
-            
-            String query2 = cb.getString(2);
-            PreparedStatement  pstm = conn.prepareStatement(query2);
-            ResultSet rs = pstm.executeQuery();
-            
-            int  iter = 0;
-            while (rs.next()) {
-                iter++;
-            }
-            cuentas = new String[iter];
-            rs = pstm.executeQuery();
-            
-            iter = 0;
-            while (rs.next()) {
-                cuentas[iter] = rs.getString("cuentaId");
-                iter++;
-            }
-            
-        } catch (SQLException ex) {
-            Logger.getLogger(cuenta.class.getName()).log(Level.SEVERE, null, ex);
-        }
+        cuentas[0] = "3763";
+        cuentas[1] = "3764";
+        
         return cuentas;
     }
 
@@ -171,26 +148,24 @@ public class cuenta {
         return dinero;
     }
     
-    public void transferir (int cuentaOrigen, int cuentaDestino, int saldo) {
-       
+    public int transferir (int cuentaOrigen, int cuentaDestino, int saldo) {
+       int status = 0;
         if (validarCuenta(cuentaDestino)) {
-        
         
             Connection conn = null;
             float cantidad = (float)saldo;
             try {
-
                 conn = connectionManager.getConnection();
-                String query = "INSERT INTO " + TABLE2 + "(cuentaTransferencia,cuentaDeposito,saldoTransferencia) VALUES (?,?,?);";
-                PreparedStatement  pstm = conn.prepareStatement(query);
+                String query = "{CALL TRANSFERENCIA(?,?,?,?)}";
+                CallableStatement  cb = conn.prepareCall(query);
 
-                pstm.setInt(1, cuentaOrigen);
-                pstm.setInt(2, cuentaDestino);
-                pstm.setFloat(3, cantidad);
-                System.out.println(pstm);
-                int row = pstm.executeUpdate();
+                cb.setInt(1, cuentaOrigen);
+                cb.setInt(2, cuentaDestino);
+                cb.setFloat(3, cantidad);
+                
+                cb.execute();
 
-                JOptionPane.showMessageDialog(view,"Transferencia realizada exitosamente");
+                status = cb.getInt(4);
 
             } catch (ClassNotFoundException ex) {
                 Logger.getLogger(usuario.class.getName()).log(Level.SEVERE, null, ex);
@@ -201,6 +176,7 @@ public class cuenta {
         } else {
             JOptionPane.showMessageDialog(view,"Cuenta inexistente");
         }
+        return status;
     }
     
     private boolean validarCuenta(int cuentaDestino) {
@@ -272,12 +248,11 @@ public class cuenta {
         return ultimo;
     }
     
+    //---------------------STRING ----------------------
     public String [] [] movimientos (int numCuenta) {
         String [] [] movi = null;
         Connection conn = null;
         
-        System.out.println("Atributos:");
-        System.out.println(this.fechaInicio.after(fechaFin));
         if (this.fechaInicio.before(fechaFin)) {
             try {
             
@@ -327,7 +302,29 @@ public class cuenta {
         return movi;
     }
     
-    
+    public int addFrecuente (int numCuenta, int cuentaPrincipal) {
+        int status = 0;
+        
+        Connection conn = null;
+        try {
+            conn = connectionManager.getConnection();
+            String query = "{CALL ADD_FRECUENTE(?,?,?)}";
+            CallableStatement  cb = conn.prepareCall(query);
+            cb.setInt(1, numCuenta);
+            cb.setInt(2, cuentaPrincipal);
+            cb.execute();
+            
+            status = cb.getInt(3);
+            
+        } catch (ClassNotFoundException ex) {
+            JOptionPane.showMessageDialog(view,"Ocurrio un error");
+            Logger.getLogger(usuario.class.getName()).log(Level.SEVERE, null, ex);
+        } catch (SQLException ex) {
+            JOptionPane.showMessageDialog(view,"Ocurrio un error");
+            Logger.getLogger(usuario.class.getName()).log(Level.SEVERE, null, ex);
+        }
+        return status;
+    }
     
     
     

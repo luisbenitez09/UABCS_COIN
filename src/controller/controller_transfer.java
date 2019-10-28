@@ -6,6 +6,7 @@ import java.sql.SQLException;
 import java.util.logging.Level;
 import java.util.logging.Logger;
 import javax.swing.JFrame;
+import javax.swing.JOptionPane;
 import model.cuenta;
 import model.usuario;
 import view.crearCuenta;
@@ -22,6 +23,7 @@ public class controller_transfer implements ActionListener{
     
     private transferencia view;
     private usuario user;
+    private int tipoTransferencia = 1;
 
     public controller_transfer(transferencia view, usuario user) {
         this.view = view;
@@ -47,6 +49,12 @@ public class controller_transfer implements ActionListener{
             this.view.numCuenta.addItem(cuentas[i]);
         }
         this.view.numCuenta.addActionListener(this);
+        
+        this.view.tipoT.removeAllItems();
+        this.view.tipoT.addItem("Cuenta Nueva");
+        this.view.tipoT.addItem("Cuenta Frecuente");
+        this.view.tipoT.addActionListener(this);
+        this.view.cFrecuentes.setVisible(false);
         
         String numCuenta = this.view.numCuenta.getSelectedItem().toString();
         
@@ -106,10 +114,41 @@ public class controller_transfer implements ActionListener{
             cuenta model = new cuenta();
             
             String cuentaOrigen = this.view.numCuenta.getSelectedItem().toString();
-            String cuentaDeposito = this.view.cuentaDeposito.getText();
-            String saldoTransfer = this.view.monto.getText();
+            String cuentaDeposito = "";
+            if (this.tipoTransferencia == 1) {
+                cuentaDeposito = this.view.cuentaDeposito.getText();
+                if (this.view.addFrecuente.isSelected()) {
+                    cuenta c = new cuenta();
+                    int status = c.addFrecuente(Integer.parseInt(cuentaDeposito), Integer.parseInt(cuentaOrigen) );
+                    
+                    if (status == 1 ) {
+                        JOptionPane.showMessageDialog(view, "Cuenta agregada a tus cuentas frecuentes. ");
+                    } else if (status == -1) {
+                        JOptionPane.showMessageDialog(view, "La cuenta ya esta en tu lista de cuentas frecuentes.");
+                    } else {
+                         JOptionPane.showMessageDialog(view, "Ocurrio un error en cuetnas frecuentes. Intenta agregarla más tarde");
+                    }
+                }
+            } else {
+                cuentaDeposito = this.view.cFrecuentes.getSelectedItem().toString();
+            }
             
-            model.transferir(Integer.parseInt(cuentaOrigen),Integer.parseInt(cuentaDeposito),Integer.parseInt(saldoTransfer));
+            String saldoTransfer = this.view.monto.getText();
+            int status = model.transferir(Integer.parseInt(cuentaOrigen),Integer.parseInt(cuentaDeposito),Integer.parseInt(saldoTransfer));
+            
+            if (status == 1) {
+                JOptionPane.showMessageDialog(view, "Transferencia realizada exitosamente.");
+            } else if (status == -1) {
+                JOptionPane.showMessageDialog(view, "No puedes hacer un deposito a la misma cuenta.");
+            } else if (status == -2) {
+                JOptionPane.showMessageDialog(view, "Tú saldo es insuficiente, por favor, intente con otra cantidad.");
+            } else if (status == -3) {
+                JOptionPane.showMessageDialog(view, "No puedes exeder tu limite de transferencia diaria");
+            } else if (status == -4) {
+                JOptionPane.showMessageDialog(view, "No puedes exceder el limite de tu cuenta");
+            } else {
+                JOptionPane.showMessageDialog(view, "Ocurrio un error.");
+            }
             this.view.cuentaDeposito.setText("");
             this.view.monto.setText("");
             
@@ -149,6 +188,20 @@ public class controller_transfer implements ActionListener{
                 default: 
                     this.view.card.setIcon(new javax.swing.ImageIcon(getClass().getResource("/view/IMG/newCard.png")));
                     break;
+            }
+            
+        } else if (e.getSource() == this.view.tipoT) {
+            String tipoTrans = this.view.tipoT.getSelectedItem().toString();
+            if (tipoTrans.equals("Cuenta Nueva")) {
+                this.view.cuentaDeposito.setVisible(true);
+                this.view.cFrecuentes.setVisible(false);
+                this.view.addFrecuente.setVisible(true);
+                this.tipoTransferencia = 1;
+            } else {
+                this.view.cuentaDeposito.setVisible(false);
+                this.view.cFrecuentes.setVisible(true);
+                this.view.addFrecuente.setVisible(false);
+                this.tipoTransferencia = 2;
             }
             
         }

@@ -41,6 +41,10 @@ public class transferencia extends javax.swing.JFrame {
         balanceCuenta2 = new javax.swing.JLabel();
         card = new javax.swing.JLabel();
         terminacionCuenta = new javax.swing.JLabel();
+        tipoT = new javax.swing.JComboBox<>();
+        jLabel2 = new javax.swing.JLabel();
+        cFrecuentes = new javax.swing.JComboBox<>();
+        addFrecuente = new javax.swing.JCheckBox();
         jLabel1 = new javax.swing.JLabel();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
@@ -76,7 +80,7 @@ public class transferencia extends javax.swing.JFrame {
         cuentaDeposito.setBackground(new java.awt.Color(248, 249, 253));
         cuentaDeposito.setBorder(null);
         getContentPane().add(cuentaDeposito);
-        cuentaDeposito.setBounds(450, 446, 340, 30);
+        cuentaDeposito.setBounds(450, 450, 130, 30);
 
         monto.setBackground(new java.awt.Color(248, 249, 253));
         monto.setBorder(null);
@@ -84,8 +88,13 @@ public class transferencia extends javax.swing.JFrame {
         monto.setBounds(450, 540, 340, 30);
 
         numCuenta.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Item 1", "Item 2", "Item 3", "Item 4" }));
+        numCuenta.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                numCuentaActionPerformed(evt);
+            }
+        });
         getContentPane().add(numCuenta);
-        numCuenta.setBounds(76, 410, 210, 27);
+        numCuenta.setBounds(80, 400, 210, 27);
 
         BTNtransferir.setBorderPainted(false);
         getContentPane().add(BTNtransferir);
@@ -107,13 +116,29 @@ public class transferencia extends javax.swing.JFrame {
 
         card.setIcon(new javax.swing.ImageIcon(getClass().getResource("/view/IMG/newCard.png"))); // NOI18N
         card.setAlignmentY(0.0F);
-        card.setBounds(new java.awt.Rectangle(80, 178, 286, 170));
         getContentPane().add(card);
         card.setBounds(80, 180, 286, 170);
 
         terminacionCuenta.setFont(new java.awt.Font("Roboto", 1, 25)); // NOI18N
         getContentPane().add(terminacionCuenta);
         terminacionCuenta.setBounds(930, 220, 90, 60);
+
+        tipoT.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Item 1", "Item 2", "Item 3", "Item 4" }));
+        getContentPane().add(tipoT);
+        tipoT.setBounds(80, 450, 210, 27);
+
+        jLabel2.setFont(new java.awt.Font("Roboto", 0, 18)); // NOI18N
+        jLabel2.setText("Transferir a: ");
+        getContentPane().add(jLabel2);
+        jLabel2.setBounds(130, 430, 100, 20);
+
+        cFrecuentes.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Item 1", "Item 2", "Item 3", "Item 4" }));
+        getContentPane().add(cFrecuentes);
+        cFrecuentes.setBounds(450, 450, 130, 27);
+
+        addFrecuente.setText("Agregar a cuenta Frecuente");
+        getContentPane().add(addFrecuente);
+        addFrecuente.setBounds(610, 450, 210, 23);
 
         jLabel1.setIcon(new javax.swing.ImageIcon(getClass().getResource("/view/IMG/transferencia.png"))); // NOI18N
         getContentPane().add(jLabel1);
@@ -122,6 +147,10 @@ public class transferencia extends javax.swing.JFrame {
         pack();
         setLocationRelativeTo(null);
     }// </editor-fold>//GEN-END:initComponents
+
+    private void numCuentaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_numCuentaActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_numCuentaActionPerformed
 
     /**
      * @param args the command line arguments
@@ -160,19 +189,23 @@ public class transferencia extends javax.swing.JFrame {
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     public javax.swing.JButton BTNtransferir;
+    public javax.swing.JCheckBox addFrecuente;
     public javax.swing.JLabel balanceCuenta;
     public javax.swing.JLabel balanceCuenta2;
+    public javax.swing.JComboBox<String> cFrecuentes;
     public javax.swing.JLabel card;
     public javax.swing.JButton close;
     public javax.swing.JButton crearCuenta;
     public javax.swing.JTextField cuentaDeposito;
     public javax.swing.JButton inicio;
     private javax.swing.JLabel jLabel1;
+    private javax.swing.JLabel jLabel2;
     public javax.swing.JTextField monto;
     public javax.swing.JButton movimientos;
     public javax.swing.JLabel nombre;
     public javax.swing.JComboBox<String> numCuenta;
     public javax.swing.JLabel terminacionCuenta;
+    public javax.swing.JComboBox<String> tipoT;
     public javax.swing.JLabel ultimoMov;
     // End of variables declaration//GEN-END:variables
 }
