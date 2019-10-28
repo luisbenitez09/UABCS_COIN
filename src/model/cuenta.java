@@ -116,7 +116,7 @@ public class cuenta {
     }
     
     // ------------------ STRING -----------------
-   public String[] cuentas (int id) throws ClassNotFoundException, SQLException {
+    public String[] cuentas (int id) throws ClassNotFoundException, SQLException {
         this.id = id;
         
         Connection conn = null;
@@ -150,7 +150,7 @@ public class cuenta {
         return cuentas;
     }
    
-   public String[] cuentasFrec (int cuentaM)  {
+    public String[] cuentasFrec (int cuentaM)  {
         this.id = id;
         
         Connection conn = null;

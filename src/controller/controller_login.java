@@ -61,6 +61,8 @@ public class controller_login implements ActionListener{
                 } else if (u.createSP() == -1) {
                     JOptionPane.showMessageDialog(view,"La contraseña debe tener al menos 8 dígitos, un número, y un símbolo especial.");
                 } else if (u.createSP() == -2) {
+                    JOptionPane.showMessageDialog(view,"Email no valido.");
+                }  else if (u.createSP() == -3) {
                     JOptionPane.showMessageDialog(view,"Debes ser mayor de edad para registrarte en UBCS COIN");
                 } else {
                     JOptionPane.showMessageDialog(view,"Ocurrio un error con tus datos.");
