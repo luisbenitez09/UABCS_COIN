@@ -116,7 +116,7 @@ public class cuenta {
     }
     
     // ------------------ STRING -----------------
-    public String[] cuentas (int id) throws ClassNotFoundException, SQLException {
+    public String[] cuentas (int id) {
         this.id = id;
         
         Connection conn = null;
@@ -144,6 +144,8 @@ public class cuenta {
             }
             
         } catch (SQLException ex) {
+            Logger.getLogger(cuenta.class.getName()).log(Level.SEVERE, null, ex);
+        } catch (ClassNotFoundException ex) {
             Logger.getLogger(cuenta.class.getName()).log(Level.SEVERE, null, ex);
         }
             

@@ -52,6 +52,7 @@ public class controller_transfer implements ActionListener{
         
         this.view.tipoT.removeAllItems();
         this.view.tipoT.addItem("Cuenta Nueva");
+        this.view.tipoT.addItem("Mis Cuentas");
         this.view.tipoT.addItem("Cuenta Frecuente");
         this.view.tipoT.addActionListener(this);
         this.view.cFrecuentes.setVisible(false);
@@ -193,24 +194,39 @@ public class controller_transfer implements ActionListener{
         } else if (e.getSource() == this.view.tipoT) {
             String tipoTrans = this.view.tipoT.getSelectedItem().toString();
             if (tipoTrans.equals("Cuenta Nueva")) {
+                
+                
                 this.view.cuentaDeposito.setVisible(true);
                 this.view.cFrecuentes.setVisible(false);
                 this.view.addFrecuente.setVisible(true);
                 this.tipoTransferencia = 1;
-            } else {
+            } else if (tipoTrans.equals("Mis Cuentas")) {
+                
+                
                 this.view.cuentaDeposito.setVisible(false);
                 this.view.cFrecuentes.setVisible(true);
                 this.view.addFrecuente.setVisible(false);
+                this.view.cFrecuentes.removeAllItems();
+                cuenta m = new cuenta();
+                int cuentaOrigen = Integer.parseInt(this.view.numCuenta.getSelectedItem().toString());
+                String[] cuentas = m.cuentas(this.user.getId());
+                for (int i = 0; i < cuentas.length; i++) {
+                    this.view.cFrecuentes.addItem(cuentas[i]);
+                }
                 this.tipoTransferencia = 2;
+            } else {
                 
+                this.view.cuentaDeposito.setVisible(false);
+                this.view.cFrecuentes.setVisible(true);
+                this.view.addFrecuente.setVisible(false);
                 cuenta m = new cuenta();
                 int cuentaOrigen = Integer.parseInt(this.view.numCuenta.getSelectedItem().toString());
                 this.view.cFrecuentes.removeAllItems();
                 String[] cuentas = m.cuentasFrec(cuentaOrigen);
-                    for (int i = 0; i < cuentas.length; i++) {
-                        this.view.cFrecuentes.addItem(cuentas[i]);
-                    }
-                
+                for (int i = 0; i < cuentas.length; i++) {
+                    this.view.cFrecuentes.addItem(cuentas[i]);
+                }
+                this.tipoTransferencia = 2;
             }
             
         }
