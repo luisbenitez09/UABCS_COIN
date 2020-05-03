@@ -79,6 +79,11 @@ public class transferencia extends javax.swing.JFrame {
 
         cuentaDeposito.setBackground(new java.awt.Color(248, 249, 253));
         cuentaDeposito.setBorder(null);
+        cuentaDeposito.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                cuentaDepositoActionPerformed(evt);
+            }
+        });
         getContentPane().add(cuentaDeposito);
         cuentaDeposito.setBounds(450, 450, 130, 30);
 
@@ -151,6 +156,10 @@ public class transferencia extends javax.swing.JFrame {
     private void numCuentaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_numCuentaActionPerformed
         // TODO add your handling code here:
     }//GEN-LAST:event_numCuentaActionPerformed
+
+    private void cuentaDepositoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_cuentaDepositoActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_cuentaDepositoActionPerformed
 
     /**
      * @param args the command line arguments

@@ -32,12 +32,12 @@ public class login extends javax.swing.JFrame {
         pass_login = new javax.swing.JPasswordField();
         btn_singup = new javax.swing.JButton();
         forgotPass = new javax.swing.JButton();
-        fecha_singup = new com.toedter.calendar.JDateChooser();
         name_singup = new javax.swing.JTextField();
         lname_singup = new javax.swing.JTextField();
         mail_singup = new javax.swing.JTextField();
         pass_singup = new javax.swing.JPasswordField();
         pass2_singup = new javax.swing.JPasswordField();
+        fecha_singup = new com.toedter.calendar.JDateChooser();
         jLabel1 = new javax.swing.JLabel();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
@@ -77,8 +77,6 @@ public class login extends javax.swing.JFrame {
         forgotPass.setBorderPainted(false);
         getContentPane().add(forgotPass);
         forgotPass.setBounds(720, 430, 160, 20);
-        getContentPane().add(fecha_singup);
-        fecha_singup.setBounds(40, 460, 250, 26);
 
         name_singup.setBorder(null);
         getContentPane().add(name_singup);
@@ -99,6 +97,8 @@ public class login extends javax.swing.JFrame {
         pass2_singup.setBorder(null);
         getContentPane().add(pass2_singup);
         pass2_singup.setBounds(330, 384, 240, 20);
+        getContentPane().add(fecha_singup);
+        fecha_singup.setBounds(40, 460, 210, 26);
 
         jLabel1.setIcon(new javax.swing.ImageIcon(getClass().getResource("/view/IMG/login.png"))); // NOI18N
         jLabel1.setText("jLabel1");

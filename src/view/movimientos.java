@@ -34,8 +34,6 @@ public class movimientos extends javax.swing.JFrame {
         terminacionCuenta = new javax.swing.JLabel();
         balance2 = new javax.swing.JLabel();
         card = new javax.swing.JLabel();
-        fechaInicio = new com.toedter.calendar.JDateChooser();
-        fechaFin = new com.toedter.calendar.JDateChooser();
         crearCuenta = new javax.swing.JButton();
         BTNtransferencia = new javax.swing.JButton();
         jLabel2 = new javax.swing.JLabel();
@@ -46,6 +44,8 @@ public class movimientos extends javax.swing.JFrame {
         jTextArea1 = new javax.swing.JTextArea();
         jScrollPane1 = new javax.swing.JScrollPane();
         jTextArea2 = new javax.swing.JTextArea();
+        fechaInicio = new com.toedter.calendar.JDateChooser();
+        fechaFin = new com.toedter.calendar.JDateChooser();
         jLabel1 = new javax.swing.JLabel();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
@@ -87,10 +87,6 @@ public class movimientos extends javax.swing.JFrame {
         card.setIcon(new javax.swing.ImageIcon(getClass().getResource("/view/IMG/newCard.png"))); // NOI18N
         getContentPane().add(card);
         card.setBounds(80, 190, 290, 150);
-        getContentPane().add(fechaInicio);
-        fechaInicio.setBounds(50, 390, 160, 26);
-        getContentPane().add(fechaFin);
-        fechaFin.setBounds(270, 390, 150, 26);
 
         crearCuenta.setBorderPainted(false);
         getContentPane().add(crearCuenta);
@@ -144,6 +140,10 @@ public class movimientos extends javax.swing.JFrame {
 
         getContentPane().add(jScrollPane1);
         jScrollPane1.setBounds(930, 350, 120, 240);
+        getContentPane().add(fechaInicio);
+        fechaInicio.setBounds(45, 390, 120, 26);
+        getContentPane().add(fechaFin);
+        fechaFin.setBounds(245, 390, 130, 26);
 
         jLabel1.setIcon(new javax.swing.ImageIcon(getClass().getResource("/view/IMG/movimientos.png"))); // NOI18N
         getContentPane().add(jLabel1);
